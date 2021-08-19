@@ -146,7 +146,7 @@ button:hover {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 100; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -154,6 +154,7 @@ button:hover {
   overflow: auto; /* Enable scroll if needed */
   background-color: #9da0a598;
   padding-top: 50px;
+  
 }
 
 /* Modal Content/Box */
@@ -240,4 +241,13 @@ font-size: 17px;
 color:rgb(0, 0, 0) !important;
 background-color: #246676 !important;
 }
+
+
+@media only screen and (max-width: 600px) {
+   .modal-content {
+    width: 90% !important;
+    z-index: 100 !important;
+  }
+}
+
 </style>

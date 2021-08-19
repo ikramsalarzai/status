@@ -237,5 +237,11 @@ color:rgb(0, 0, 0) !important;
 background-color: #246676 !important;
 }
 
+@media only screen and (max-width: 600px) {
+   .modal-content {
+    width: 90% !important;
+    z-index: 100 !important;
+  }
+}
 
 </style>

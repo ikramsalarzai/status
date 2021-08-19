@@ -4,10 +4,6 @@
       
 
       <div class="col-lg-12 col-sm-12   pt-4">
-        <button v-if="infos == ''" class="btn btn-primary loading" disabled>
-          <span class="spinner-grow spinner-grow-sm"></span>
-          Loading..
-        </button>
         <div class="slider d-block d-sm-none">
         <div id="carouselExampleControls" class="carousel carousel-fade slide" data-ride="carousel" 
            data-interval="5000"
@@ -30,6 +26,13 @@
   </a>
         </div>
       </div>
+
+
+        <button v-if="infos == ''" class="btn btn-primary loading" disabled>
+          <span class="spinner-grow spinner-grow-sm"></span>
+          Loading..
+        </button>
+        
         <div
           class="small_screen_card"
           v-for="(user, id) in infos.data"
@@ -373,9 +376,10 @@ article {
 }
 
 .slider{
-
   margin: -50px  -20px 15px -20px !important;
 padding: 0px;
+ 
+ 
 
 }
 </style>
