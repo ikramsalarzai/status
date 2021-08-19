@@ -89,7 +89,7 @@ export default {
 
 @media only screen and (max-width: 600px) {
   .contact {
-font-size: 15px  !important;
+font-size: 13px  !important;
 }
 }
 
