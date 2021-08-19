@@ -375,5 +375,7 @@ article {
 .slider{
 
   margin: 10px 0px !important;
+padding: 10px;
+
 }
 </style>
