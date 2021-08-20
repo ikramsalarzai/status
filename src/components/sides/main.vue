@@ -2,7 +2,6 @@
   <div class="container">
     <div class="row">
       
-
       <div class="col-lg-12 col-sm-12   pt-4">
         <div class="slider d-block d-sm-none">
         <div id="carouselExampleControls" class="carousel carousel-fade slide" data-ride="carousel" 
