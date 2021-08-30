@@ -84,12 +84,14 @@ export default {
       }
     });
   },
+  
   methods: {
     newurl(id) {
       this.full_video = id;
       var stepOne = id.split("?")[0];
       var stepTwo = stepOne.split("/");
       this.full_video = stepTwo[stepTwo.length - 1];
+      
 
       //  document.documentElement.scrollTop = 0; //this is to go to top
     },

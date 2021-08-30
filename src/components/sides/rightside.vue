@@ -76,13 +76,36 @@
         <h5 class="card-title mt-2  font-weight-bold" style="color:#246676">
           Recent Videos
         </h5>
-        <span v-for="item in video_object.slice(0, 3)" :key="item.id">
-          <a :href="item.url" target="_blank">
-            <img src="@/assets/t.jpg" alt="" class="py-1 youtube" />
-            <span class="pl-2"> New video </span>
-          </a>
-        </span>
+          <span v-for="item in vids.slice(0, 3)" :key="item.id"> 
+                <img
+                @click="newurl(item.html)"
+                  class="image p-4 float-left my-1"
+                  width="100%"
+                  style="  "
+                  :src="item.thumbnail_url"
+                  alt=""
+                />
+           
+                 
+          </span>
+
+          <!-- <div class="col-lg-3 " v-for="item in vids.slice(0,3)" :key="item.id">
+            <div class="card " >
+            <span>
+              <img
+                class="image float-right"
+                width="200%"
+                style="  "
+                :src="item.thumbnail_url"
+                alt=""
+              />
+              <p class="float-left ">New Video</p>
+              </span>
+            </div>
+          </div> -->
       </div>
+
+
       <!-- <div
         class="mt-2 col-lg-12 col-sm-12 politics p-3 cursor"
         style="border-radius:10px"
@@ -114,11 +137,29 @@ export default {
       video_id: [],
       video_url: null,
       video_object: [],
-      slides:null
+      slides:null,
+
+      //new videos
+      full_video: "MjOUd9Nrt3Q",
+
     };
   },
 
-  methods: {},
+  methods: {
+    openvideo(video){
+      window.open(video)
+    },
+ 
+    newurl(id) {
+      this.full_video = id;
+      var stepOne = id.split("?")[0];
+      var stepTwo = stepOne.split("/");
+      this.full_video = stepTwo[stepTwo.length - 1];
+       window.open('https://www.youtube.com/embed/' + this.full_video + '?autoplay=1&mute=1', "_blank");
+       
+
+  },
+  },
   created() {
     axios
       .get("https://dashboard.fkheart.com/api/videos")
@@ -127,6 +168,26 @@ export default {
       axios
       .get("https://dashboard.fkheart.com/api/slider")
       .then((response) => (this.slides = response));
+  
+  
+  axios.get("https://dashboard.fkheart.com/api/videos").then((resp) => {
+      var videourl = null;
+      videourl = resp.data;
+      this.video_url = videourl;
+      for (let index = 0; index < videourl.length; index++) {
+        let videdetail = null;
+        videdetail =
+          "https://www.youtube.com/oembed?url=" +
+          videourl[index].url +
+          "&format=json";
+        axios.get(videdetail).then((Response) => {
+          var video_detail = {};
+          video_detail = Response.data;
+          this.vids.push(video_detail);
+        });
+      }
+    });
+  
   },
 };
 </script>
@@ -188,5 +249,9 @@ p {
 .btn-outline:hover{
    background-color:  #246676;
    color:  #ffffff;;
+}
+
+.newvideo{
+  cursor: pointer;
 }
 </style>
